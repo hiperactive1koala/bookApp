@@ -1,0 +1,23 @@
+{
+  "name": "bookapp",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiperactive1koala/bookApp.git"
+  },
+  "author": "Ismayil Shirinzade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiperactive1koala/bookApp/issues"
+  },
+  "homepage": "https://github.com/hiperactive1koala/bookApp#readme",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "graphql": "^16.9.0"
+  }
+}
