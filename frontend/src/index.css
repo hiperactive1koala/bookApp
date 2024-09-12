@@ -1,0 +1,12 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    border: 2px solid rgb(136, 136, 136);
+    padding: 5px;
+    color: black;
+}
