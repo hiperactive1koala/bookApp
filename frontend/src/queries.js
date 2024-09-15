@@ -21,3 +21,34 @@ export const ALL_BOOKS = gql`
         }
     }
 `
+
+export const CREATE_BOOK = gql`
+    mutation createBook($title: String!, $author: String!, $published: Int!, $genres: [String!]!) {
+        addBook(
+            title: $title,
+            author: $author,
+            published: $published,
+            genres: $genres
+        ) {
+            title
+            author
+            published
+            genres
+            id
+        }
+    }
+`
+
+export const UPDATE_AUTHOR = gql`
+    mutation EditAuthor($name: String!, $setToBorn: Int!) {
+        editAuthor(
+            name: $name
+            setToBorn: $setToBorn
+        ) {
+            name
+            born
+            bookCount
+            id
+        }
+    }
+`

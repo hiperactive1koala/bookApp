@@ -1,12 +1,13 @@
 import { useQuery } from "@apollo/client"
 import { ALL_AUTHORS } from "../queries"
+import BirthYear from "./BirthYear"
 
 const Authors = () => {
   const { loading, data } = useQuery(ALL_AUTHORS)
   if (loading) return null
   
   const authors = data.allAuthors
-  
+    
   return (
     <div>
       <h2>authors</h2>
@@ -26,6 +27,7 @@ const Authors = () => {
           ))}
         </tbody>
       </table>
+      <BirthYear allAuthors={authors} />
     </div>
   )
 }
