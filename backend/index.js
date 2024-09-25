@@ -1,7 +1,7 @@
 const { ApolloServer } = require('@apollo/server')
 const { startStandaloneServer } = require('@apollo/server/standalone')
 const { v1:uuid } = require('uuid')
-
+const { GraphQLError } = require('graphql')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const Author = require('./models/author')
@@ -135,7 +135,7 @@ const typeDefs = `
       setToBorn: Int!
     ): Author
   }
-`
+  `
 
 const resolvers = {
   Query: {
@@ -173,8 +173,24 @@ const resolvers = {
   },
   Mutation: {
     addBook: async (root, args) => {
+      if(args.title.length < 2) {
+        throw new GraphQLError('Title is too short', {
+          extensions: {
+            code: 'BAD_USER_INPUT',
+            invalidArgs: args.title,
+          },
+        })
+      }
+      if(args.author.length < 2) {
+        throw new GraphQLError('Author name is too short', {
+          extensions: {
+            code: 'BAD_USER_INPUT',
+            invalidArgs: args.author,
+          },
+        })
+      }
+      
       const author = await Author.findOne({name: args.author})
-
       if(author){
         const newBook = new Book({ ...args, author: author, bookCount: await Book.collection.countDocuments({author: args.author}) })
         await newBook.save()
@@ -238,6 +254,6 @@ const server = new ApolloServer({
 
 startStandaloneServer(server, {
   listen: { port: 4000 },
-}).then(({ url }) => {
+  }).then(({ url }) => {
   console.log(`Server ready at ${url}`)
-})
+  })
