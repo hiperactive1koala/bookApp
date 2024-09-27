@@ -22,7 +22,7 @@ mongoose.connect(MONGODB_URI)
   })
   .catch((error) => {
     console.log('error connection to MongoDB:', error.message)
-  })
+})
 
 
 // let authors = [

@@ -27,13 +27,17 @@ const BirthYear = ({ allAuthors }) => {
   return (
     <div>
         <h2>Set birthyear</h2>
-        <form onSubmit={submit}>
+        <form
+            style={{display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 300}}
+            onSubmit={submit}
+        >
             <Select
                 defaultValue={name}
                 onChange={setName}
                 options={names}
             />
-            <div>born <input 
+            <div style={{display: 'flex', flexDirection: 'row', width: '100%'}}>born <input 
+                style={{width: '100%', marginLeft: 10}}
                 type="text"
                 value={bornYear}
                 onChange={({ target }) => setBornYear(target.value)}
