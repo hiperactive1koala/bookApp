@@ -6,6 +6,7 @@ import Authors from "./components/Authors";
 import Books from "./components/Books";
 import NewBook from "./components/NewBook";
 import LoginForm from "./components/LoginForm";
+import Recomended from "./components/Recomended";
 
 const App = () => {
 
@@ -25,7 +26,9 @@ const App = () => {
           <Route path="/login" element={ <LoginForm setToken={setToken} />}></Route>
         }
         {token &&
-          <Route path="/add-book" element={ <NewBook />}></Route>
+          <>
+          <Route path="/add-book" element={<NewBook />}></Route>
+          <Route path="/recommend" element={<Recomended />}></Route></>
         }
       </Routes>
     </div>

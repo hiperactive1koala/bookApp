@@ -9,6 +9,7 @@ const Navbar = ({ token, setToken }) => {
         <Link to='/books'>books</Link>
         {token && <>
           <Link to='/add-book'>add book</Link>
+          <Link to='/recommend'>recommend</Link>
           <Logout setToken={setToken} />
         </>}
         {!token && <Link to='/login'>login</Link>}

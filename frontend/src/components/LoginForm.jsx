@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom"
 const LoginForm = ({ setToken }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
     const navigate = useNavigate()
+    
     const [login, result] = useMutation(LOGIN, {
         onError: (error) => {
             console.log(error.graphQLErrors[0].message)
